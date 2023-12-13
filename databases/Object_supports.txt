@@ -1,0 +1,13 @@
+
+canvas
+cardboard
+ceramic
+cotton
+paper
+parchment
+stone
+stone wall
+textile
+wax
+wood
+wool

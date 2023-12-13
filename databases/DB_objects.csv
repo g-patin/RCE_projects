@@ -1,0 +1,41 @@
+object_Id,object_category,object_type,object_technique,object_title,object_name,object_creator,object_date,object_owner,object_support,colorants,colorants_name,binding,ratio,thickness_um,color,status,project_Id
+WR1,model,ref,,,,,2000’s,REL,unknown,pressed barium sulphate,WhiteStandard,none,1-0,unknown,white,,na
+BEK1859P,heritage,sculpture,sewing,Infinity Mirror Room - Phalli’s Field,,"Kusama, Yayoi",1965,MBVB,textile,,,,,,,,2021-141
+2751-MK,heritage,drawing,pastel,"Shirley Temple, le plus jeune monstre sacré du cinéma de son temps",,"Salvador, Dali",1939,MBVB,paper,,,,,,,,2023-103
+Mariakerk,heritage,wandschildering,frescoe,Christelijk onderwerp,,Unknown,13e-16e eeuw ,SOGK,stone wall,,,,,,,,2023-079
+BW69341,heritage,banknote,print,TienGulden,,De Nederlandsche Bank,1924,DNB,paper,,,,,,,,2023-082
+ws01,heritage,seals,,Stadszegel 's Gravenhage  ,,,unknown,Erfgoed Leiden en Omstreken,wax,,,,,,,,2023-065
+ws02,heritage,seals,,"Zegel van Justitie, Hof van Holland ",,,1508,Erfgoed Leiden en Omstreken,wax,,,,,,,,2023-065
+ws03,heritage,seals,,Gerijt van der Laen,,,1536,Erfgoed Leiden en Omstreken,wax,,,,,,,,2023-065
+ws05,heritage,seals,,Jhr. Vincent van Lockhorst ,,,1565,Erfgoed Leiden en Omstreken,wax,,,,,,,,2023-065
+ws04b,heritage,seals,,"Small sample - Dagelijks zegel, Hof van Holland ",,,1504-1505,Erfgoed Leiden en Omstreken,wax,,,,,,,,2023-065
+ws04a,heritage,seals,,"Large sample - Dagelijks zegel, Hof van Holland  ",,,1504-1505,Erfgoed Leiden en Omstreken,wax,,,,,,,,2023-065
+T001,sample,Tapij,textile,Textile sample n°01,,Unknown,,REL,cotton,,,,,,,,2023-041
+T002,sample,Tapij,textile,Textile sample n°02,,Unknown,,REL,cotton,,,,,,,,2023-041
+T003,sample,Tapij,textile,Textile sample n°03,,Unknown,,REL,cotton,,,,,,,,2023-041
+Ink0001,model,drawing,ink,Stabilo-blue,,Lyreco,2023,REL,paper,,,,,,,,2023-9001
+Ink0002,model,drawing,ink,Stabilo-pink,,Impega,2023,REL,paper,,,,,,,,2023-9001
+Ink0003,model,drawing,ink,Stabilo-green,,Maped,2023,REL,paper,,,,,,,,2023-9001
+Ink0004,model,drawing,ink,Stabilo-yellow,,Stanger,2023,REL,paper,,,,,,,,2023-9001
+Ink0005,model,drawing,ink,WriterFine,,Lyreco,2023,REL,paper,,,,,,,,2023-9001
+mu01,model,seals,,wax mock up 01,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu02,model,seals,,wax mock up 02,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu03,model,seals,,wax mock up 03,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu06,model,seals,,wax mock up 06,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu09,model,seals,,wax mock up 09,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu12,model,seals,,wax mock up 12,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu15,model,seals,,wax mock up 15,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu18,model,seals,,wax mock up 18,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu21,model,seals,,wax mock up 21,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu24,model,seals,,wax mock up 24,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu27,model,seals,,wax mock up 27,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu33,model,seals,,wax mock up 33,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu36,model,seals,,wax mock up 36,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+mu39,model,seals,,wax mock up 39,,"Mariska, Castelijn",2023,"Mariska, Castelijn",wax,,,,,,,,2023-065
+Ink0009,model,drawing,ink,Stabilo-yellow,,Stanger,2023,REL,paper,,,,,,,,2023-9001
+RP-T-2021-450,heritage,notebook,felt-tip ink,Black Book 1,,"Tellegen, Boris",1986-1992,RMA,paper,,,,,,,,2023-9001
+BWS0001,model,BWS,textile,ISO 105 B-Serie Blue Wool Standard no4,BW4,Beuth Verlag GmbH,2021,REL,wool,,C.I.Acid Blue 121,,,,blue,,2023-9001
+BWS0002,model,BWS,textile,ISO 105 B-Serie Blue Wool Standard no3,BW3,Beuth Verlag GmbH,2019,REL,wool,,C.I.Acid Blue 83,,,,blue,,2023-9001
+BWS0003,model,BWS,textile,ISO 105 B-Serie Blue Wool Standard no2,BW2,Beuth Verlag GmbH,2019,REL,wool,,C.I.Acid Blue 104,,,,blue,,2023-9001
+BWS0004,model,BWS,textile,ISO 105 B-Serie Blue Wool Standard no1,BW1,Beuth Verlag GmbH,2019,REL,wool,,C.I.Acid Blue 109,,,,blue,,2023-9001_2023-9002
+BWS0005,model,BWS,textile,ISO 105 B-Serie Blue Wool Standard no1,BW1,Beuth Verlag GmbH,2019,REL,wool,,C.I.Acid Blue 109,,,,blue,,2023-9002
