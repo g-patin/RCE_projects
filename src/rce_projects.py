@@ -106,7 +106,7 @@ class RCEProject(object):
                 projects = objects_DB.T[column].loc['project_id']
                 
                 if self.project_id in projects:
-                    object_Id = objects_DB.T[column].loc['object_Id']
+                    object_Id = objects_DB.T[column].loc['object_id']
                     list_objects.append(object_Id)
             
             self.objects = sorted(list_objects)
@@ -117,7 +117,7 @@ class RCEProject(object):
             # -------------------------------
             objects_DB = pd.read_csv(self.folder_DB / 'DB_objects.csv')            
             
-            self.objects_info = objects_DB[objects_DB['object_Id'].isin(self.objects)]
+            self.objects_info = objects_DB[objects_DB['object_id'].isin(self.objects)]
 
 
 
@@ -146,7 +146,7 @@ class RCEProject(object):
             # -------------------------------
             # Main dataframe
             # -------------------------------
-            main_df = pd.DataFrame(columns=['object_Id', 'analyses', 'number of analyses', 'number of interim files', 'size of interim files (KB)'])
+            main_df = pd.DataFrame(columns=['object_id', 'analyses', 'number of analyses', 'number of interim files', 'size of interim files (KB)'])
 
             for technique in self.techniques:
 
@@ -176,7 +176,7 @@ class RCEProject(object):
                         list_row = [object, technique, nb_analyses, nb_files, total_size_files]
                         main_df.loc[len(main_df)] = list_row
 
-            self.overview = main_df.set_index(['object_Id','analyses']).sort_index() 
+            self.overview = main_df.set_index(['object_id','analyses']).sort_index() 
 
     
 

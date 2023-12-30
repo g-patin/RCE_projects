@@ -204,7 +204,7 @@ class MF(measurements.data):
                 info = self.get_info()['value']
                 date = info.loc['date_time'].split(' ')[0]
                 project = info.loc['project']
-                meas_Id = info.loc['meas_Id']
+                meas_Id = info.loc['meas_id']
                 object_technique = info.loc['object_technique']
                 object_support = info.loc['object_support']
 
@@ -215,7 +215,7 @@ class MF(measurements.data):
             else:
 
                 info = self.get_info()
-                object_Id = info.loc['object_Id']['value']
+                object_Id = info.loc['object_id']['value']
                 group_nb = info.loc['group']['value']
                 
 
@@ -276,7 +276,7 @@ class MF(measurements.data):
 
             else:
                 info = self.get_info()
-                object_Id = info.loc['object_Id']['value']
+                object_Id = info.loc['object_id']['value']
                 group_nb = info.loc['group']['value']
                 
 
@@ -334,7 +334,7 @@ class MF(measurements.data):
                 project = info.loc['project']                
                 object_technique = info.loc['object_technique']
                 object_support = info.loc['object_support']
-                object_Id = info.loc['object_Id']
+                object_Id = info.loc['object_id']
                 group_nb = info.loc['group']
                 
 
@@ -364,7 +364,7 @@ class MF(measurements.data):
                 info = self.get_info()['value']
                 date = info.loc['date_time'].split(' ')[0]
                 project = info.loc['project']
-                meas_Id = info.loc['meas_Id']
+                meas_Id = info.loc['meas_id']
                 object_technique = info.loc['object_technique']
                 object_support = info.loc['object_support']
 
@@ -380,7 +380,7 @@ class MF(measurements.data):
                 project = info.loc['project']                
                 object_technique = info.loc['object_technique']
                 object_support = info.loc['object_support']
-                object_Id = info.loc['object_Id']
+                object_Id = info.loc['object_id']
                 group_nb = info.loc['group']
 
                 title = f'Microfading analysis - Colorimetric coordinates, {date}, {project}, {object_Id}, {group_nb}, ' + r"\textbf{"+object_technique+"}" + f', {object_support}'
@@ -413,7 +413,7 @@ class MF(measurements.data):
                 info = self.get_info()['value']
                 date = info.loc['date_time'].split(' ')[0]
                 project = info.loc['project']
-                meas_Id = info.loc['meas_Id']
+                meas_Id = info.loc['meas_id']
                 object_technique = info.loc['object_technique']
                 object_support = info.loc['object_support']
 
@@ -429,7 +429,7 @@ class MF(measurements.data):
                 project = info.loc['project']                
                 object_technique = info.loc['object_technique']
                 object_support = info.loc['object_support']
-                object_Id = info.loc['object_Id']
+                object_Id = info.loc['object_id']
                 group_nb = info.loc['group']
 
                 title = f'Microfading analysis - CIELAB color space, {date}, {project}, {object_Id}, {group_nb}, ' + r"\textbf{"+object_technique+"}" + f', {object_support}'
@@ -524,7 +524,7 @@ class MF(measurements.data):
             
         else:
             group_nb = self.get_info().loc['group']['value']
-            object_Id = self.get_info().loc['object_Id']['value']
+            object_Id = self.get_info().loc['object_id']['value']
 
             folder_interim = self.get_path(type='interim_folder')
             all_interim_files = os.listdir(folder_interim)
@@ -589,7 +589,7 @@ class MF(measurements.data):
     def mean(self, files=[], group=False):
 
         group_nb = self.get_info().loc['group']['value']
-        object_Id = self.get_info().loc['object_Id']['value']
+        object_Id = self.get_info().loc['object_id']['value']
 
         folder_interim = self.get_path(type='interim_folder')
         folder_processed = self.get_path(type='processed_folder')
@@ -653,7 +653,7 @@ class MF(measurements.data):
         final_df_INFO.rename({'[SINGLE MICRO-FADING ANALYSIS]': '[MEAN MICRO-FADING ANALYSES]'}, inplace=True)
         
         # insert the new values (mean values)
-        final_df_INFO.loc['meas_Id','value'] = f'MF.{object_Id}.{"-".join(Ids_range)}'    
+        final_df_INFO.loc['meas_id','value'] = f'MF.{object_Id}.{"-".join(Ids_range)}'    
         final_df_INFO.loc['integration_time_ms','value'] = np.mean(intg)
         final_df_INFO.loc['average','value'] = np.mean(avg)
         final_df_INFO.loc['duration_min','value'] = np.mean(duration)

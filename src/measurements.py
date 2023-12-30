@@ -176,7 +176,7 @@ class data(object):
             object_Id = df.loc['lamp'].iloc[0]
 
         else:
-            object_Id = df.loc['object_Id'].iloc[0] 
+            object_Id = df.loc['object_id'].iloc[0] 
 
             
 
@@ -398,8 +398,8 @@ class data(object):
             info = self.get_info(dataframe=False)
             date = info['date_time'].split(' ')[0]
             Id = info['Id']
-            project_Id = info['project_Id']
-            object_Id = info['object_Id']
+            project_Id = info['project_id']
+            object_Id = info['object_id']
             object_type = info['object_type']            
             device = info['device'].split('_')[0]
             filter = info['filter']

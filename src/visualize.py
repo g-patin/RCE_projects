@@ -85,7 +85,7 @@ def MFT():
         
 
     Objects_DB_file = folder_DB + 'DB_objects.csv'    
-    Objects_DB = pd.read_csv(Objects_DB_file, index_col = 'object_Id')
+    Objects_DB = pd.read_csv(Objects_DB_file, index_col = 'object_id')
 
     Projects_DB_file = folder_DB + 'DB_projects.csv'
     Projects_DB = pd.read_csv(Projects_DB_file, index_col = 'project_id')
@@ -415,7 +415,7 @@ def power():
         
 
     Objects_DB_file = folder_DB + 'DB_objects.csv'    
-    Objects_DB = pd.read_csv(Objects_DB_file, index_col = 'object_Id')
+    Objects_DB = pd.read_csv(Objects_DB_file, index_col = 'object_id')
 
     Projects_DB_file = folder_DB + 'DB_projects.csv'
     Projects_DB = pd.read_csv(Projects_DB_file, index_col = 'project_id')
@@ -630,7 +630,7 @@ def RS():
     
 
     Objects_DB_file = folder_DB + 'DB_objects.csv'    
-    Objects_DB = pd.read_csv(Objects_DB_file, index_col = 'object_Id')
+    Objects_DB = pd.read_csv(Objects_DB_file, index_col = 'object_id')
 
     Projects_DB_file = folder_DB + 'DB_projects.csv'
     Projects_DB = pd.read_csv(Projects_DB_file, index_col = 'project_id')
@@ -926,7 +926,7 @@ def overview():
     folder_DB = '/home/gus/Documents/RCE/databases/'
 
     Objects_DB_file = folder_DB + 'DB_objects.csv'    
-    Objects_DB = pd.read_csv(Objects_DB_file, index_col = 'object_Id')
+    Objects_DB = pd.read_csv(Objects_DB_file, index_col = 'object_id')
     object_ids_list = Objects_DB.index    
 
     Projects_DB_file = folder_DB + 'DB_projects.csv'
