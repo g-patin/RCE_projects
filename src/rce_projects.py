@@ -665,7 +665,7 @@ class RCEProject(object):
             with data_output:
 
                 if technique == 'MFT':
-                    visualize.MFT(wl_range=(380,1000))
+                    visualize.MFT()
 
                 elif technique == 'Power':                
                     visualize.power()
