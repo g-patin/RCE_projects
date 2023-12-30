@@ -1,5 +1,5 @@
-object_Id,object_category,object_type,object_technique,object_title,object_name,object_creator,object_date,object_owner,object_support,colorants,colorants_name,binding,ratio,thickness_um,color,status,project_Id
-WR1,model,ref,,,,,2000’s,REL,unknown,pressed barium sulphate,WhiteStandard,none,1-0,unknown,white,,na
+object_id,object_category,object_type,object_technique,object_title,object_name,object_creator,object_date,object_owner,object_support,colorants,colorants_name,binding,ratio,thickness_um,color,status,project_id
+WR1,model,ref,,,,,2000’s,REL,unknown,pressed barium sulphate,WhiteStandard,none,1-0,unknown,white,na,na
 BEK1859P,heritage,sculpture,sewing,Infinity Mirror Room - Phalli’s Field,,"Kusama, Yayoi",1965,MBVB,textile,,,,,,,,2021-141
 2751-MK,heritage,drawing,pastel,"Shirley Temple, le plus jeune monstre sacré du cinéma de son temps",,"Salvador, Dali",1939,MBVB,paper,,,,,,,,2023-103
 Mariakerk,heritage,wandschildering,frescoe,Christelijk onderwerp,,Unknown,13e-16e eeuw ,SOGK,stone wall,,,,,,,,2023-079

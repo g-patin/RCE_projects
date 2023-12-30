@@ -1,4 +1,4 @@
-project_Id,institution,aanvraagdatum,uiterste_datum,PL,ML,keyword
+project_id,institution,aanvraagdatum,uiterste_datum,PL,ML,keyword
 2021-141,Museum Boijmans van Beuningen,2021-10-15,,SdG,AB,Kusama
 2022-XXX,Oude Kerk Amsterdam,2022-09-01,,RM,none,mural
 2023-082,De Nederlandsche Bank,2023-04-13,,GP,AB,bankbiljet
