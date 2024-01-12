@@ -91,7 +91,7 @@ def MFT():
     Projects_DB = pd.read_csv(Projects_DB_file, index_col = 'project_id')
 
     Projects_techniques_file = folder_DB + 'Projects_techniques.csv'    
-    Projects_techniques = pd.read_csv(Projects_techniques_file, index_col = 'Projects')
+    Projects_techniques = pd.read_csv(Projects_techniques_file, index_col = 'project_id')
 
     
     ###### RETRIEVE MFT PROJECTS #######    
@@ -421,7 +421,7 @@ def power():
     Projects_DB = pd.read_csv(Projects_DB_file, index_col = 'project_id')
 
     Projects_techniques_file = folder_DB + 'Projects_techniques.csv'    
-    Projects_techniques = pd.read_csv(Projects_techniques_file, index_col = 'Projects')
+    Projects_techniques = pd.read_csv(Projects_techniques_file, index_col = 'project_id')
 
     
     ###### RETRIEVE MFT PROJECTS #######    
@@ -636,7 +636,7 @@ def RS():
     Projects_DB = pd.read_csv(Projects_DB_file, index_col = 'project_id')
 
     Projects_techniques_file = folder_DB + 'Projects_techniques.csv'    
-    Projects_techniques = pd.read_csv(Projects_techniques_file, index_col = 'Projects')
+    Projects_techniques = pd.read_csv(Projects_techniques_file, index_col = 'project_id')
 
     
     projects_RS = sorted(Projects_techniques[Projects_techniques['RS'] == True].index.values, reverse=True)
@@ -855,7 +855,7 @@ def RS():
                         new_wl_max = int(wl_max)
                        
 
-                    data_sp = rs.get_data(data='sp').loc[str(wl_min):str(new_wl_max)] 
+                    data_sp = rs.get_data(data='sp')
                     wl = data_sp.index.astype(float)                
                     data_SP = np.array([wl, gaussian_filter1d(data_sp.values.astype(float), sigma=sigma.value)])
                     data_SP_deriv = np.array([wl, np.gradient(data_SP[1], wl.values[1]-wl.values[0])])
@@ -888,11 +888,11 @@ def RS():
 
                 display(tab)
 
-                with out1:                        
-                    plotting.RS_SP(data=list_data_SP, labels=list_labels,)
+                with out1:                                           
+                    plotting.RS_SP(data=list_data_SP, labels=list_labels,x_range=(wl_min,new_wl_max))
 
                 with out2:
-                    plotting.RS_SP(data=list_data_SP_deriv, labels=list_labels)
+                    plotting.RS_SP(data=list_data_SP_deriv, labels=list_labels,x_range=(wl_min,new_wl_max), derivation='first')
 
                 with out3:                                         
                     plotting.CIELAB(data=list_data_Lab, labels=list_labels, color_data=None)

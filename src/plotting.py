@@ -1,6 +1,7 @@
 ####### IMPORT PACKAGES #######
 
 import os
+from re import X
 from tkinter import font
 import pandas as pd
 import matplotlib
@@ -82,6 +83,9 @@ def CIELAB(data, std=[], labels=[], title='none', color_data='sample', fontsize=
 
     if Path('~/Documents/RCE/docs/colour_circle.png').expanduser().exists():
         path_colour_circle = Path('~/Documents/RCE/docs/colour_circle.png').expanduser()
+
+    elif Path('~/Documents/docs/colour_circle.png').expanduser().exists():
+        path_colour_circle = Path('~/Documents/docs/colour_circle.png').expanduser()
 
     else:
         print(f'Plotting process aborted ! Add colour_circle.png in the following folder: {Path("~/Documents/RCE/docs").expanduser()}')
@@ -688,7 +692,7 @@ def power(data, labels=[], title='none', fontsize=24, save=False, path_fig='cwd'
 
 
 
-def RS_SP(data, std=[], labels=[], title='none', fontsize=24, x_range=(), y_range=(), save=False, path_fig='cwd', *args, **kwargs):
+def RS_SP(data, std=[], labels=[], title='none', fontsize=24, x_range=(), save=False, path_fig='cwd', derivation="none", *args, **kwargs):
     """
     Description: Plot the reflectance spectrum of one or several datasets.
 
@@ -708,7 +712,6 @@ def RS_SP(data, std=[], labels=[], title='none', fontsize=24, x_range=(), y_rang
 
         _ x_range (tuple, optional): Lower and upper limits of the x-axis. Defaults to (). 
 
-        _ y_range (tuple, optional): Lower and upper limits of the y-axis. Defaults to (). 
         
 
     
@@ -722,22 +725,27 @@ def RS_SP(data, std=[], labels=[], title='none', fontsize=24, x_range=(), y_rang
         labels = ['none'] * len(data)
     
 
-    for el_data, label in zip(data,labels):
+    for el_data, label in zip(data,labels):        
 
-        wl = el_data[0]
-        sp = el_data[1]        
+        df_data = pd.DataFrame(el_data).T.set_index(0)
+        
+        if x_range != ():
+            df_data = df_data.loc[x_range[0]:x_range[1]]  
+
+        wl = df_data.index
+        sp = df_data.iloc[:,0]     
 
         ax.plot(wl, sp, label = label, *args, **kwargs)
 
-    
     if x_range != ():
-        ax.set_xlim(x_range[0], x_range[1])
-
-    if y_range!=():    
-        ax.set_ylim(y_range[0], y_range[1])
+        ax.set_xlim(x_range[0],x_range[1])
     
     ax.set_xlabel('Wavelength $\lambda$ (nm)', fontsize = fontsize)
-    ax.set_ylabel('Reflectance factor', fontsize = fontsize)
+
+    if derivation == "none":
+        ax.set_ylabel('Reflectance factor', fontsize = fontsize)
+    elif derivation == "first":
+        ax.set_ylabel(r'$\frac{dR}{d\lambda}$', fontsize = fontsize+10)
 
     ax.xaxis.set_tick_params(labelsize = fontsize)
     ax.yaxis.set_tick_params(labelsize = fontsize)
