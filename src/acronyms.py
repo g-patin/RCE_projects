@@ -26,9 +26,8 @@ areas = {
 ######## CAMERAS ########
 
 cameras = {
-    "IS1": "IS1_The imaging source DFK 41AU02",
-    "IS2": "IS2_The imaging source DFK 33UX183",
-    "ERc": "ERc_AxioCam ERc 5s Zeiss",
+    "C01": "The imaging source DFK 41AU02",
+    "C02": "The imaging source DFK 33UX183",    
 }
 
 
@@ -58,15 +57,25 @@ dE_colour = {
 
 devices = {
     "2201504U1": "Av_Avantes spectrometer, 2201504U1",
-    "i1": "i1_X-Rite i1 Pro",
-    "KM": "KM_Konica Minolta, ",
+    "i1": "X-Rite i1 Pro",
+    "KM": "Konica Minolta, ",
     "Tidas": "Tidas_S 400",
-    "OO": "OO_Ocean Optics, USB4H06761",
-    "Mav": "Mav_Gossen, Mavospec base_19D10406",
+    "OO": "Ocean Optics, USB4H06761",
+    "Mav": "Gossen, Mavospec base_19D10406",
     "MFT-Fotonowy": "MFT-Fotonowy",
-    "PM100USB": "PM100USB_Thorlabs",
-    "stereo": "stereo_stereomicroscope, sMFT",
-    "sMFT": "stereo-MFT",
+    "PM100USB": "Thorlabs, PM100USB + S405C",
+    "stereo": "stereomicroscope, sMFT",    
+    "LM01": "PM100USB_Thorlabs",
+    "LM02": "Elsec, 764UV, 04733",
+    "LM03": "Apogee, SE-100-SS",
+    "LM04": "Apogee, SP-110-SS",
+    "MFT1": "stereo-MFT",
+    "MFT2": "Fotonowy-MFT",  
+    "SP01": "Avantes, AvaSpec-2048, 0311028S1",
+    "SP02": "Ocean Optics, USB4000-VIS-NIR-ES, USB4H06761",
+    "SP03": "Tidas, S 400, 39059",
+    "SP04": "Avantes, AvaSpec-ULS-EVO-RS, 2201504U1",
+    "SP05": "Konica Minolta, CM 2600-d",
 }
 
 
@@ -203,14 +212,16 @@ folder_types = {
 
 geometries = {
     "AS30": "AvaSphere 30 - 8:d",
-    "AS80": "AvaSphere 80 - 8:d",    
-    "stereo": "45° : 0°",
+    "AS80": "AvaSphere 80 - 8:d", 
+    "COA": "0°:(45°:0°)",    
     "E.1.1": "45° : 0°",    
     "E.2.1": "0° : 45°",
     "E.3.1": "45° : 0°",
     "KM": "di:8.de:8",
     "i1": "45° : 0°",
-    "COA": "0°:(45°:0°)"
+    "stereo1": "45° : 0°",
+    "stereo2": "0° : 45°",
+    "MFT2": "0° : 45°",
 }
 
 
@@ -234,18 +245,26 @@ institutions = {
 
 lamps = {
     "daylight": "daylight",
-    "HAL1": "HAL1_Avantes, halogen",
-    "HAL2": "HAL2_",
-    "HAL3": "HAL3_Ocean Optics, HL-2000-FHSA-LL",
-    "HAL4": "HAL4_",
-    "HPX1": "HPX1_Ocean Optics, HPX-2000-HP-DUV",
-    "HPX2": "HPX2_Ocean Optics, HPX-2000-HP-DUV",
+    "HAL01": "Avantes, AvaLight-Hal, LS-0802041",
+    "HAL02": "Ocean Optics, HL-3P-CAL, 7003P1048",
+    "HAL03": "Ocean Optics, HL-2000-FHSA-LL, 085500849",
+    "HAL04": "Schott, Halogen ring",
+    "HAL05": "Avantes, DH-2000-FHS, 00200091 ",
+    "HPX01": "Ocean Optics, HPX-2000-HP-DUV, 038910134",
+    "HPX02": "Ocean Optics, HPX-2000-HP-DUV, 085230055",  
+    "HPX03": "Newport, Model 71207",  
     "KM" : "Xe_3 pulsed xenon lamps",
-    "LED1": "LED1_cold white, single ring",
-    "LED2": "LED2_cold white, double ring",
-    "LED3": "LED3_Tidas S 400, back illumination, cold white",
-    "LED4": "LED4_Xicato, XTM.95 3000K warm white (VGM)",
-    "LED5": "LED5_Thorlabs, MWWHF2",
+    "LED01": "Fotonowy MFT white 2700K",
+    "LED02": "Fotonowy MFT white 5700K",
+    "LED03": "Fotonowy MFT UV 365nm",
+    "LED04": "Fotonowy MFT UV 390nm",
+    "LED05": "Fotonowy MFT violet 405nm",
+    "LED06": "Fotonowy MFT blue 425nm",
+    "LED07": "Thorlabs, MWWHF2",
+    "LED08": "cold white, single ring",
+    "LED09": "cold white, double ring",
+    "LED10": "Tidas S 400, back illumination, cold white",
+    "LED11": "Xicato, XTM.95 3000K warm white (VGM)",    
     "i1": "TypeA_gas filled tungsten",
     "Xe_UV": "Xe_3 pulsed xenon lamps with UV",    
     "Xe_UVcut": "Xe_3 pulsed xenon lamps UV cut",
@@ -279,17 +298,29 @@ medewerkers = {
     'RP' : 'Rika Pause',
     'SB' : 'Sanne Berbers',
     'SdG' : 'Suzan de Groot',
-    'SS' : 'Saskia Smulders'
+    'SS' : 'Saskia Smulders',
+    'XX' : 'Unknown'
+}
+
+MFT_Fotonowy_FWHM = {
+    '1': 0.59,
+    '2': 0.61,
+    '3': 0.73,
+    '4': 0.56,
+    '5': 0.58,
+    '6': 0.46
 }
 
 
 ######## MEASUREMENT MODES ########
 
-modes = {
+modes = {    
     "COA": 'COA_stereo-MFT Co-axial mode',
     "cc": 'cc_Ocean Optics cosine corrector',
     "bfw": 'bfw_bare fiber',
-    "LampSide" : "Lamp on the side"
+    "LampSide" : "Lamp on the side",
+    "stereo1" : "stereomicroscope stemi SV11 Zeiss",
+    "stereo2" : "stereomicroscope stemi SV11 Zeiss",
 }
 
 
@@ -349,8 +380,9 @@ supports = {
 }
 
 systems = {
-    "KM": "KM_Konica Minolta spectrophotometer",
-    "stereo": "stereo_stereomicroscope stemi SV11 Zeiss"
+    "KM": "Konica Minolta spectrophotometer",
+    "stereo1": "stereomicroscope stemi SV11 Zeiss",
+    "stereo2": "stereomicroscope stemi SV11 Zeiss",
 }
 
 unit_dE = {
@@ -369,10 +401,11 @@ thicknesses = {
 }
 
 WRs = {
-    "cc": "cc_Ocean Optics, cosine corrector",
-    "WR1": "WR1_Dr Lange, pressed barium sulphate powder",
-    "WR2": "WR2_Konica Minolta, calibration plate 22191004",
-    "WR3": "WR3_Konica Minolta, CM-A145",
+    "cc": "Ocean Optics, cosine corrector",
+    "WR1": "Dr Lange LZM 013, pressed barium sulphate powder",
+    "WR2": "Konica Minolta, calibration plate 22191004",
+    "WR3": "Konica Minolta, CM-A145",
+    "WR4": "Fotonowy, Fotolon PTFE",
     "PO003": "PO003, ivory black",    
 }
 

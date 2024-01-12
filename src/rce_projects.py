@@ -7,7 +7,7 @@ from glob import glob
 import subprocess
 from venv import create
 import pandas as pd
-from typing import Union
+from typing import Optional, Union
 import nbformat as nbf
 from nbformat.v4 import new_markdown_cell
 
@@ -31,8 +31,24 @@ style = {"description_width": "initial"}
 
 
 class RCEProject(object):
+    """Manage or create RCE research projects.
 
-    def __init__(self,project_id:str, new_project=False, folder_RCE:Union[str, Path]= '~/Documents/RCE'):
+    """   
+
+    def __init__(self,project_id:str, new_project:Optional[bool] = False, folder_RCE:Union[str, Path]= '~/Documents/RCE'):
+        """Instantiate an 'RCEProject' python object.
+
+        Parameters
+        ----------
+        project_id : str
+            Project id number uniquely created for each RCE project (eg: '2023-011')
+
+        new_project : bool, optional
+            Set this parameter to True in order to create a new project, by default False
+
+        folder_RCE : Union[str, Path], optional
+            Location of the root RCE folder on your local computer, by default '~/Documents/RCE'
+        """
 
         self.project_id = project_id  
         self.new_project = new_project
@@ -72,7 +88,7 @@ class RCEProject(object):
               
 
         possible_matches = list(self.folder_projects.glob(f'*{self.project_id}_*'))
-
+        
         if len(possible_matches) !=1:
             raise RuntimeError(f'There is no unique project folder corresponding to {self.project_id}. Please, first create a project using the following command: RCEProject("create")')
             
@@ -180,6 +196,294 @@ class RCEProject(object):
 
     
 
+    def add_object(self):
+
+        '''
+        Add the information of a new object to the file objects_DB.csv
+        ''' 
+
+        Projects_DB_file = self.folder_DB / 'DB_projects.csv'
+        Projects_DB = pd.read_csv(Projects_DB_file)
+
+        projects_list =  list(Projects_DB['project_id'].values)
+        
+        names_file = open(self.folder_DB / r'Object_creators.txt', 'r')
+        names = names_file.read()
+        names_list = names.split("\n")
+
+        types_file = open(self.folder_DB / r'Object_types.txt', 'r')
+        types = types_file.read()
+        types_list = types.split("\n")
+
+        techniques_file = open(self.folder_DB / r'Object_techniques.txt', 'r')
+        techniques = techniques_file.read()
+        techniques_list = techniques.split("\n")
+
+        supports_file = open(self.folder_DB  / r'Object_supports.txt', 'r')
+        supports = supports_file.read()
+        supports_list = supports.split("\n")
+
+
+        project_Id = ipw.Combobox(
+            value = self.project_id,
+            options = projects_list,
+            description = 'Project',
+            ensure_option=False,
+            disabled=False,
+            #layout=Layout(width="70%", height="30px"),
+            #style=style,
+        )
+        
+        object_Id = ipw.Text(        
+            value='',
+            placeholder='Inv. N°',
+            description='Id',
+            disabled=False,
+            #layout=Layout(width="70%", height="30px"),
+            #style=style,   
+        )
+
+        object_category = ipw.Dropdown(
+            options=['heritage','model','sample'],
+            value='heritage',
+            description='Category',
+            disabled=False,
+            #layout=Layout(width="70%", height="30px"),
+            #style=style,
+        )    
+
+        object_creator = ipw.Combobox(
+            placeholder = 'Artists, authors,etc.',
+            options = names_list,
+            description = 'Creator',
+            ensure_option=False,
+            disabled=False,
+            #layout=Layout(width="70%", height="30px"),
+            #style=style,
+        ) 
+
+        object_date = ipw.Text(
+            value='',
+            placeholder='Enter a date',
+            description='Date',
+            disabled=False,
+            #layout=Layout(width="70%", height="30px"),
+            #style=style,         
+        )  
+
+        object_title = ipw.Textarea(        
+            value='',
+            placeholder='Enter the title',
+            description='Title',
+            disabled=False,
+            #layout=Layout(width='79%',height="95%"),
+            #style=style,   
+        )  
+
+        object_name = ipw.Textarea(        
+            value='',
+            placeholder='Enter a short object name',
+            description='Name',
+            disabled=False,
+            #layout=Layout(width='79%',height="95%"),
+            #style=style,   
+        )
+
+        object_type = ipw.Combobox(
+            placeholder = 'General classification',
+            options = types_list,
+            description = 'Type',
+            ensure_option=False,
+            disabled=False,
+            #layout=Layout(width="20%", height="30px"),
+            #style=style,
+        )
+
+        object_technique = ipw.Combobox(
+            placeholder = 'Enter a technique',
+            options = techniques_list,
+            description = 'Technique',
+            ensure_option=False,
+            disabled=False,
+            #layout=Layout(width="20%", height="30px"),
+            #style=style,
+        )   
+
+        object_support = ipw.Combobox(
+            placeholder = 'Enter a material',
+            options = supports_list,
+            description = 'Support',
+            ensure_option=False,
+            disabled=False,
+            #layout=Layout(width="20%", height="30px"),
+            #style=style,
+        )
+
+        recording = ipw.Button(
+            description='Create record',
+            disabled=False,
+            button_style='', # 'success', 'info', 'warning', 'danger' or ''
+            tooltip='Click me',
+            #layout=Layout(width="50%", height="30px"),
+            #style=style,
+            #icon='check' # (FontAwesome names without the `fa-` prefix)
+        )
+
+        button_output = ipw.Output()  
+
+        categories = {'heritage':'No need to fill','model':'Enter a color'}
+    
+
+        object_color = ipw.Combobox(
+            description = 'Color',
+            placeholder = 'Optional',
+            ensure_option=False,
+            disabled=False,
+        )  
+
+        object_colorants = ipw.Combobox(
+            description = 'Colorants',
+            placeholder = 'Optional',
+            ensure_option=False,
+            disabled=False,
+        )  
+
+        colorants_name = ipw.Combobox(
+            description = 'Colorants name',
+            placeholder = 'Optional',
+            ensure_option=False,
+            disabled=False,
+        )  
+
+        colorants_binding = ipw.Combobox(
+            description = 'Binding',
+            placeholder = 'Optional',
+            ensure_option=False,
+            disabled=False,
+        )
+
+        colorants_ratio = ipw.Combobox(
+            description = 'Ratio',
+            placeholder = 'Optional',
+            ensure_option=False,
+            disabled=False,
+        )
+
+        colorants_thickness = ipw.Combobox(
+            description = 'Thickness_um',
+            placeholder = 'Optional',
+            ensure_option=False,
+            disabled=False,
+        )
+
+
+        def button_pressed(b):
+            with button_output:
+                button_output.clear_output(wait=True)
+
+                Objects_DB_file = self.folder_DB / 'DB_objects.csv'
+                Objects_DB = pd.read_csv(Objects_DB_file)
+            
+                new_row = pd.DataFrame({'object_id':object_Id.value,
+                        'object_category':object_category.value, 
+                        'object_type':object_type.value, 
+                        'object_technique':object_technique.value,
+                        'object_title':object_title.value,
+                        'object_name':object_name.value,
+                        'object_creator':object_creator.value,
+                        'object_date':object_date.value,
+                        'object_support':object_support.value,
+                        'colorants':object_colorants.value,
+                        'colorants_name':colorants_name.value,
+                        'color':object_color.value,
+                        'binding':colorants_binding.value,
+                        'ratio':colorants_ratio.value,
+                        'thickness_um':colorants_thickness.value,
+                        'project_id':project_Id.value},                       
+                        index=[0] 
+                        ) 
+
+                names_list = list(object_creator.options)
+                types_list = list(object_type.options)
+                techniques_list = list(object_technique.options)
+                supports_list = list(object_support.options)
+
+                if object_creator.value not in names_list:                       
+                    names_list.append(str(object_creator.value))         
+                    names_list = sorted(names_list)
+
+                    with open(self.folder_DB / r'Object_creators.txt', 'w') as f:
+                        f.write('\n'.join(names_list))
+
+                    f.close()
+
+                if object_type.value not in types_list:                       
+                    types_list.append(str(object_type.value))         
+                    types_list = sorted(types_list)
+
+                    with open(self.folder_DB / r'Object_types.txt', 'w') as f:
+                        f.write('\n'.join(types_list))
+
+                    f.close()
+
+                if object_technique.value not in techniques_list:                       
+                    techniques_list.append(str(object_technique.value))         
+                    techniques_list = sorted(techniques_list)
+
+                    with open(self.folder_DB / r'Object_techniques.txt', 'w') as f:
+                        f.write('\n'.join(techniques_list))
+
+                    f.close()
+
+
+                if object_support.value not in supports_list:                       
+                    supports_list.append(str(object_support.value))         
+                    supports_list = sorted(supports_list)
+
+                    with open(self.folder_DB / r'Object_supports.txt', 'w') as f:
+                        f.write('\n'.join(supports_list))
+
+                    f.close()
+                
+                
+                
+                Objects_DB_new = pd.concat([Objects_DB, new_row],)
+                Objects_DB_new.to_csv(Objects_DB_file, index= False)
+                print(f'Object {object_Id.value} added to database.')
+        
+        
+        recording.on_click(button_pressed)
+
+
+        def update_placeholder(w,value):        
+            w.placeholder = categories[value]
+            return w
+        
+        def change_value(change):
+            update_placeholder(object_color,change.new)
+            update_placeholder(object_colorants,change.new)
+            update_placeholder(colorants_name,change.new)
+            update_placeholder(colorants_binding,change.new)
+            update_placeholder(colorants_ratio,change.new)
+            update_placeholder(colorants_thickness,change.new)
+
+        object_category.observe(change_value, names='value')
+
+        
+        display(ipw.HBox([ipw.VBox([object_Id,project_Id,object_category],layout=Layout(width="27%", height="100px")),
+                        ipw.VBox([object_creator,object_date],layout=Layout(width="27%", height="70px")),
+                        ]))
+        
+        display(ipw.HBox([ipw.VBox([object_title, object_name],layout=Layout(width='27%', height='110px')),
+                        ipw.VBox([object_type,object_technique,object_support],layout=Layout(width='40%', height="110px")),
+                        ]))
+        display(ipw.HBox([ipw.VBox([object_color,object_colorants,colorants_name],layout=Layout(width='27%', height='110px')),
+                        ipw.VBox([colorants_binding,colorants_ratio,colorants_thickness]),
+                        ]))
+        display(ipw.HBox([recording, button_output]))
+
+        
+
     def aanvraag(self, file_format=['pdf','docx','odt','txt']):
         """Open the aanvraag document corresponding to the project in a web browser.
 
@@ -223,7 +527,9 @@ class RCEProject(object):
 
 
     def create_project(self):
-        """Instantiate a new project. It returns ipywidget objects allowing users to create a new project.
+        """Instantiate a new project. It only takes one parameter which is the Id number of the project. 
+        
+        It returns ipywidget objects allowing users to create a new project.
         """
         
         #### CREATE SEVERAL IPYWIDGETS ####

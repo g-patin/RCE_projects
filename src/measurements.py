@@ -1,26 +1,19 @@
 ####### IMPORT PACKAGES #######
 
+from optparse import Option
 import os
+from token import OP
 import pandas as pd
 import matplotlib 
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-
-from IPython import get_ipython
-
 import colour
-from colour.plotting import *
-from colour.colorimetry import *
-from colour.models import *
-from colour import SDS_ILLUMINANTS
-
-from ipywidgets import Layout, Button, Box, interact, interactive, fixed, interact_manual
+from ipywidgets import Layout, Button, Box
 import ipywidgets as ipw
 from IPython.display import display, clear_output, HTML
-
-import imageio
 from pathlib import Path
+from typing import Optional
 
 # self made packages
 import acronyms
@@ -105,26 +98,28 @@ class data(object):
         return f'Measurement: Id = {self.Id}, type = {self.type}, project = {self.project_id}, data_category = {self.data_category})'   
     
 
-    def get_path(self, data_category='interim', file_category='single', file_path='absolute'):      
-        """Obtain the path for given files.
+    def get_path(self, data_category:Optional[str] = 'interim', file_category:Optional[str] = 'single', file_path:Optional[str] = 'absolute'):# -> Any:# -> Any:
+        """Obtain the path for a desired category of files for a given project.
 
-        Args:
-            data_category (str, optional):
-                Select the type of data being asked ('interim' or 'processed'). Default to 'interim'.
+        Parameters
+        ----------
+        data_category : Optional[str], optional
+            Select the type of data being asked ('interim' or 'processed'), by default 'interim'
 
-            file_category (str, optional):
-                Select the category of file ('single', 'group', 'object'). Default to 'single'.
-                'single' returns the file corresponding to the given measurement Id.
-                'group' returns the files related to the corresponding group.
-                'object' returns the files related to the corresponding object.
+        file_category : Optional[str], optional
+            Select the category of file ('single', 'group', 'object'), by default 'single'
+            'single' returns the file corresponding to the given measurement Id.
+            'group' returns the files related to the corresponding group.
+            'object' returns the files related to the corresponding object.
 
-            file_path (str, optional):
-                Select the type of path ('absolute', 'name', 'stem', 'suffix'). Default to 'absolute'.
-            
+        file_path : Optional[str], optional
+            Select the type of path ('absolute', 'name', 'stem', 'suffix'), by default 'absolute'
 
-        Returns:
-            list: Return the full path of the file.
-        """ 
+        Returns
+        -------
+        _type_
+            Return the path of the files.
+        """  
 
         ####### DEFINE GLOBAL VARIABLES ########
     
@@ -169,7 +164,8 @@ class data(object):
 
         ####### RETRIEVE GROUP AND OBJECT_ID ########
 
-        df = pd.read_csv(folder_interimdata + interim_filename, index_col='parameter')
+        df = pd.read_csv(folder_interimdata + interim_filename, index_col='parameter')        
+        
         group = df.loc['group'].iloc[0]
 
         if self.initial == 'P':
@@ -233,7 +229,19 @@ class data(object):
         return paths
          
     
-    def get_dir(self, folder_type='interim'):
+    def get_dir(self, folder_type:Optional[str] = 'interim'):
+        """Obtain the path for a desired data folder for a given project.
+
+        Parameters
+        ----------
+        folder_type : Optional[str], optional
+            Select the type of data folder being asked ('interim' or 'processed'), by default 'interim'
+
+        Returns
+        -------
+        str
+            It returns the absolute path of the folder as a string object.
+        """
 
         ####### DEFINE GLOBAL VARIABLES ########
     
@@ -285,15 +293,19 @@ class data(object):
         return folders[folder_type]
 
 
-    def get_info(self, dataframe=True):
-        """Retrieve the metadata of the measurement.
+    def get_info(self, dataframe:Optional[bool] = True):
+        """Obtain the metadata of the measurement.
 
-        Args:
-            No argument is required.            
+        Parameters
+        ----------
+        dataframe : Optional[bool], optional
+            Whether the info are being returned inside a Pandas dataframe object, by default True
 
-        Returns:
-            It returns information about the measurement as a Pandas series.
-        """
+        Returns
+        -------
+        _type_
+            It returns information over the measurement.
+        """        
 
         file = self.get_path()[0]
         
@@ -317,19 +329,24 @@ class data(object):
             return df_info
 
 
-    def get_data(self, data='all', show_plot = False):
-        """Retrieve the data of the measurement.
+    def get_data(self, data:Optional[str] = 'all', show_plot:Optional[bool] = False):
+        """Obtain the data of the measurement.
 
-        Args:
-            data (str, optional): 
-            Enables to select which aspect of the data to retrieve. Default to 'all'. For reflectance spectra (RS), possibility to select the LabCh values ('Lab') or the spectral values only ('sp).
+        Parameters
+        ----------
+        data : Optional[str], optional
+            Select which aspect of the data to retrieve, by default 'all'
+            For reflectance spectra (RS), possibility to select the LabCh values ('Lab') or the spectral values only ('sp).
 
-            show_plot(boolean, optional):
-            Gives the possibility to display the data inside a plot, when set to 'True'. Default to 'False'.
+        show_plot : Optional[bool], optional
+            Whether to display the data inside a plot, by default False
 
-        Returns:
+        Returns
+        -------
+        _type_
             It returns the data in a Pandas dataframe.
         """
+        
 
         file = self.get_path()[0]
         
@@ -364,20 +381,9 @@ class data(object):
         return df_data   
 
         
-    def plot_data(self,fontsize=26,save=False, plot_category='single',x_range='all', *args, **kwargs):
-        """Plot the data. 
-
-        Args:
-            fontsize (int, optional):
-            Fontsize of the text and numbers in the plot. Default to 26.
-
-            save (boolean, optional):
-            Enables to save the figure when set to 'True'. Default to 'False'.  
-
-            group (boolean, optional): 
-            When 'False', it displays the data individually (one curve per plot). When True, it shows all the curves related to a similar group. Default to False.
-        """
-
+    def plot_data(self,fontsize:Optional[int] = 26, save:Optional[bool] = False, plot_category:Optional[str] = 'single', *args, **kwargs):
+        
+        # x_range:Optional[str] = 'all'
         data = self.get_data()
 
         if self.initial == 'P':
